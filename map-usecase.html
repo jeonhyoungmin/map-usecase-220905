@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 가장 자바스크립트 다운 코드의 모습은 어떤모습일까?
+    // 작성한 코드가 길면, 가독성은 떨어지지만, 코드를 해석하는 '가해성'은 높아집니다. 
+    // 이번 예제 방향은 가장 자바스크립트 다운, 강의라고 생각하지 않고 사용한 자바스크립트 언어 자체의 지원사항을 최대한 끌어올린 방식입니다. 너무나 편리한 리액트의 DOM 생성 기능을 의존하는 상황이 못된다면, 아마 저는(강사) 이렇게 작성하며 개발을 진행 할 것 같습니다.
+
+    // 1. map() 배열메서드의 효용
+    // 2. 메서드체인
+    // 3. 화살표함수(arrow function)가 가지고 있는 리턴 결정방식
+    // 4. 축약형 자바스크립트 작성
+    
+    const nameArray = ['피카츄', '라이츄', '파이리', '꼬부기', '버터풀'];
+    const tagMake = (tagName, textNode) => `<${tagName}>${textNode}</${tagName}>`;
+    const ulWrap = tagMake('ul', nameArray.map((value) => tagMake('li', value)).join(''));
+
+    const root = document.createElement('div')
+    root.id = 'root'
+    document.body.appendChild(root)
+    root.innerHTML = ulWrap
+
+    const a = nameArray.map((value) => tagMake('li', value)).join('')
+    console.log(a)
+  </script>
+</body>
+</html>
